@@ -1,0 +1,261 @@
+body {
+    background-color: #f0f8ff;
+    font-family:sans-serif;
+    text-align: center;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+/* googleフォントを取得 */
+.tytle-logo {
+    font-family: "Alegreya Sans";
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #b5b8b9;
+    padding-bottom: 20px;
+}
+
+/* 文字の一部だけ色を変更 */
+.tytle-logo span {
+    color: rgb(43, 195, 195);
+}
+
+.btn {
+    display: inline-flex;
+    padding: 5px;
+    transition:all.3s;
+    text-decoration: none;
+    color: #000000;
+}
+
+
+/* 質問選択部分をメモがめくれたように可愛くする */
+.option {
+    width: 80%;
+
+    padding:2em;/*内側余白*/
+	background-color :#fff;/*メモ全体の背景色*/
+	position:relative;
+}
+
+.option:after {
+	position: absolute;
+	content: '';
+	right: 0px;
+	top: 0px;
+	border-width: 0 25px 25px 0;
+	border-style: solid;
+	border-color: rgb(43, 195, 195) #f0f8ff  rgb(43, 195, 195);/*メモめくれ色*/
+	box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);    
+}
+
+
+.question {
+    font-weight: bold;
+    color:rgb(43, 195, 195);
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.top {
+    display: flex;
+}
+
+.top01 {
+    position: relative;
+}
+
+.top01 img {
+    width: 100%;
+
+}
+
+.top02 img {
+    width: 100%;
+}
+
+
+
+.top_msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+}
+
+/* 文字列よりも短い線を下線として引く */
+.question::after {
+    position:absolute;
+    content: "";
+    background-color: rgb(43, 195, 195);
+    width:300px;
+    height: 5px;
+    bottom:-20px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.btn:hover {
+    background-color: rgb(43, 195, 195);
+    border-radius: 5px;
+    color:#fff;
+}
+
+ul {
+    padding-left: 0;
+    margin:0 auto;
+}
+
+li {
+    list-style: none;
+    padding:10px;
+}
+
+
+/* suggentionのタイトル囲み枠線を追加 */
+.suggestion {
+    font-size: 20px;
+    font-weight: bold;
+    color:rgb(43, 195, 195);
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 2px rgb(43, 195, 195);
+    border-bottom: solid 2px rgb(43, 195, 195);
+}
+.suggestion:before, .suggestion:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: rgb(43, 195, 195);
+}
+.suggestion:before {left: 10px;}
+.suggestion:after {right: 10px;}
+.suggestion p {
+    margin: 0; 
+    padding: 0;
+}
+
+/* suggestion_contentsの中身を横に並べる */
+.suggestion_contents {
+    justify-content: space-between;
+    margin:30px;
+}
+
+/* 1つめの提案用CSS */
+.s_01_memo {
+    background: linear-gradient(-225deg, rgb(73, 223, 223) 0%, #ebd4f7 56%, #baf7ee 100%);
+    text-align: center;
+    border-radius: 50px 3px;
+    margin:30px;
+    padding: 10px;
+}
+.s_01_memo p {
+    margin:25px;
+}
+
+#s_01 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#s_01 .img {
+    width: calc(100%/6);
+    padding:0 5px;
+    box-sizing: border-box;
+}
+
+/* 2つめの提案用CSS */
+#s_02 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#s_02 .img {
+    width: calc(100%/6);
+    padding:0 5px;
+    box-sizing: border-box;
+}
+
+/* 3つめの提案用CSS */
+#s_03 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#s_03 .img {
+    width: calc(100%/6);
+    padding:0 5px;
+    box-sizing: border-box;
+}
+
+/* 4つめの提案用CSS */
+#s_04 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#s_04 .img {
+    width: calc(100%/6);
+    padding:0 5px;
+    box-sizing: border-box;
+}
+
+/* 5つめの提案用CSS */
+#s_05 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#s_05 .img {
+    width: calc(100%/6);
+    padding:0 5px;
+    box-sizing: border-box;
+}
+
+/* 6つめの提案用CSS */
+#s_06 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#s_06 .img {
+    width: calc(100%/6);
+    padding:0 5px;
+    box-sizing: border-box;
+}
+
+
+.return_btn {
+    color: white;
+    background-color: rgb(43, 195, 195);
+    padding:10px 50px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.return_btn:hover {
+    background-color: #fff;
+    color: rgb(43, 195, 195);
+    border: 2px solid rgb(43, 195, 195);
+}
+
+
+/* ステップバーをつくる */
+/* ステップバーのコンテナ */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+    position: relative;
+}

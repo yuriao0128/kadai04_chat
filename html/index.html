@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- googleフォント埋め込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- googleフォント埋め込みここまで -->
+    <!-- fontawesome埋め込み -->
+    <script src="https://kit.fontawesome.com/ef226e501a.js" crossorigin="anonymous"></script>
+    <!-- css読み込み -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <!-- スリックスライダー用に読み込み -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャリア診断アプリ</title>
+</head>
+<body>
+    <!-- 選択毎に画面遷移をするようにするため2つ目の質問はdisplay:none;に -->
+     <!-- タイトルロゴ -->
+    <div class="app-theme">
+        <p class="tytle-logo"><span>C</span>areer <span>S</span>tep <span>N</span>avi</p>
+        <!-- spanタグで文字の一部の色を変える -->
+    </div>
+
+
+    <!-- トップの画面をつくる -->
+    <!-- btnを押すとdivが消えるため、中の囲みタグはsectionにしておく -->
+    <div class="top">
+        <section class="top01">
+        <img src="../img/top-img.png">
+        <section class="top_msg">
+            <h1>Career Step Navi</h1>
+            <p>キャリアステップを明確にするための診断アプリです。<br>
+            （全5問、約30秒で完了します！）</p>
+            <a class="return_btn" id="btn" href="#q_01" style="text-decoration: none;">診断を開始する　▶</i></a>
+        </section>
+        </section>
+        <dection class="top02">
+        <img src="../img/top-img03.png">
+        </section>
+    </div>
+
+        <!-- 1つ目の質問 -->
+        <!-- トップページから表示をするために、displayは全てnoneにしておく -->
+        <div id="q_01" class="fit" style="display: none;">
+            <p class="question">仕事やキャリアに対してどのような気持ちを持っていますか？</p>
+            <ul class="option">
+                <li><a class="btn" href="#q_02" data-value="a">やりたいことが特に浮かばない</a></li>
+                <li><a class="btn" href="#q_02" data-value="b">興味はあるが、具体的に何をしたいのか分からない</a></li>
+                <li><a class="btn" href="#q_02" data-value="c">目指したいキャリアや職業を明確にしている</a></li>
+            </ul>
+        </div>
+
+            <!-- 2つ目の質問 -->
+    <div id="q_02" style="display: none;">
+        <p class="question">質問2 過去に楽しんで取り組んだことや、やりがいを感じた経験はありますか？</p>
+        <ul class="option">
+            <li><a class="btn" href="#q_03" data-value="a">特に思い当たらない</a></li>
+            <li><a class="btn" href="#q_03" data-value="b">あるが、仕事にどう繋げられるかわからない</a></li>
+            <li><a class="btn" href="#q_03" data-value="c">やりがいを感じた経験が明確にある</a></li>
+        </ul>
+    </div>
+
+        <!-- 3つ目の質問 -->
+        <div id="q_03" style="display: none;">
+            <p class="question">質問3 目標達成に向けて、何から始めるべきかのイメージはありますか？</p>
+            <ul class="option">
+                <li><a class="btn" href="#q_04" data-value="a">何から始めるべきかイメージが湧かない</a></li>
+                <li><a class="btn" href="#q_04" data-value="b">いくつかのアイデアはあるが、具体的な計画が立てられていない</a></li>
+                <li><a class="btn" href="#q_04" data-value="c">やるべきことが明確に分かっている</a></li>
+            </ul>
+        </div>
+
+            <!-- 4つ目の質問 -->
+    <div id="q_04" style="display: none;">
+        <p class="question">質問4 目標に向けて、実行する際にどのような障害を感じていますか？</p>
+        <ul class="option">
+            <li><a class="btn" href="#q_05" data-value="a">時間やリソースの不足などの障害がある</a></li>
+            <li><a class="btn" href="#q_05" data-value="b">自信の欠如やモチベーションが低下している</a></li>
+            <li><a class="btn" href="#q_05" data-value="c">特に障害は感じていないが、サポートが欲しい</a></li>
+        </ul>
+    </div>
+
+            <!-- 5つ目の質問 -->
+            <div id="q_05" style="display: none;">
+                <p class="question">質問5 キャリアの目標達成に向けて、環境は十分だと感じていますか？</p>
+                <ul class="option">
+                    <li><a class="btn end" data-value="a">サポートや環境が不足していると感じる</a></li>
+                    <li><a class="btn end" data-value="b">ある程度のサポートはあるが、もっと必要だと感じる</a></li>
+                    <li><a class="btn end" data-value="c">十分なサポートや環境が整っている</a></li>
+                </ul>
+            </div>
+
+
+            <!-- 以下、回答を作成する -->
+            <!-- 1つ目の回答:何がしたいのかわからない -->
+        </div>
+        <!-- 提案① ここから -->
+        <div id="answer_01" style="display: none;">
+        <!-- 全て作り終えた後に⇧にstyle=desplay:none;を入れる -->
+        <p class="suggestion">自分を知ることからスタートしよう</p>
+            <div class="suggestion_contents">
+            <div id="s_01">
+            <img src="../img/s_01.png" class="img s_01_img">
+            <img src="../img/s_02.png" class="img s_02_img">
+            <img src="../img/s_03.png" class="img s_03_img">
+            <img src="../img/s_04.png" class="img s_04_img">
+            <img src="../img/s_05.png" class="img s_05_img">
+            <img src="../img/s_06.png" class="img s_06_img">
+            </div>
+            <div class="s_01_memo">
+            <p><span style="font-weight:bold;">今のあなたは、まず自分を知ることが大切です。</span><br>
+            現状にモヤモヤを乗り越えるためには、自分自身の理解から始めましょう。<br>
+            まずは自己探究ワークをして、自分の価値観を明らかにしましょう！</p>
+            </div>
+            <a href="index.html" class="return_btn" style="text-decoration: none;">トップページに戻る    <i class="fa-solid fa-square-caret-right"></i></a>
+            </div>
+        </div>
+        <!-- 提案① ここまで -->
+
+
+        <!-- 提案② ここから -->
+                <div id="answer_02" style="display: none;">
+                <p class="suggestion">自分のワクワクやトキメキを思い出そう</p>
+                <div class="suggestion_contents">
+                <div id="s_02">
+                <img src="../img/s_01.png" class="img s_01_img">
+                <img src="../img/s_02.png" class="img s_02_img">
+                <img src="../img/s_03.png" class="img s_03_img">
+                <img src="../img/s_04.png" class="img s_04_img">
+                <img src="../img/s_05.png" class="img s_05_img">
+                <img src="../img/s_06.png" class="img s_06_img">
+                </div>
+                <div class="s_01_memo">
+                <p><span style="font-weight:bold;">今のあなたには、自分自身の経験の振り返りがおすすめです。</span><br>
+                きっとあなたにも、心が動いた体験や思い出があるはず。<br>
+                自分の心に正直になって、ライフラインチャートを書いてみよう！</p>
+                </div>
+                <a href="index.html" class="return_btn" style="text-decoration: none;">トップページに戻る<i class="fa-solid fa-square-caret-right"></i></a>
+                </div>
+            </div>
+        <!-- 提案② ここまで -->
+
+        <!-- 提案③ ここから -->
+        <div id="answer_03" style="display: none;">
+                <p class="suggestion">キャリア相談をして、自分の選択肢を知ろう</p>
+                <div class="suggestion_contents">
+                <div id="s_03">
+                <img src="../img/s_01.png" class="img s_01_img">
+                <img src="../img/s_02.png" class="img s_02_img">
+                <img src="../img/s_03.png" class="img s_03_img">
+                <img src="../img/s_04.png" class="img s_04_img">
+                <img src="../img/s_05.png" class="img s_05_img">
+                <img src="../img/s_06.png" class="img s_06_img">
+                </div>
+                <div class="s_01_memo">
+                <p><span style="font-weight:bold;">今のあなたには、キャリアアドバイザーとの面談がおすすめです。</span><br>
+                他者との対話を通すことで、可能性や選択肢がひらけて見えるかも。<br>
+                視野を広げていくためにも、キャリアアドバイザーと面談をしよう！</p>
+                </div>
+                <a href="index.html" class="return_btn" style="text-decoration: none;">トップページに戻る   <i class="fa-solid fa-square-caret-right"></i></a>
+                </div> 
+            </div> 
+        <!-- 提案③ ここまで -->
+
+            <!-- 提案④ ここから -->
+                <div id="answer_04" style="display: none;">
+                    <p class="suggestion">プランニング講座に参加をしよう</p>
+                    <div class="suggestion_contents">
+                    <div id="s_04">
+                    <img src="../img/s_01.png" class="img s_01_img">
+                    <img src="../img/s_02.png" class="img s_02_img">
+                    <img src="../img/s_03.png" class="img s_03_img">
+                    <img src="../img/s_04.png" class="img s_04_img">
+                    <img src="../img/s_05.png" class="img s_05_img">
+                    <img src="../img/s_06.png" class="img s_06_img">
+                    </div>
+                    <div class="s_01_memo">
+                    <p><span style="font-weight:bold;">今のあなたには、具体的な行動計画が必要です。</span><br>
+                    目標が明確でやることもわかっているからこそ、日々の計画を具体的にしよう。<br>
+                    やることが決まれば、あとは進んでいくだけ！</p>
+                    </div>
+                    <a href="index.html" class="return_btn" style="text-decoration: none;">トップページに戻る　　<i class="fa-solid fa-square-caret-right"></i></a>
+                    </div>
+                </div>
+            <!-- 提案④ ここまで -->
+
+            <!-- 提案⑤ ここから -->
+        <div id="answer_05" style="display: none;">
+            <p class="suggestion">自分が目標とするメンターをつくろう</p>
+            <div class="suggestion_contents">
+            <div id="s_05">
+            <img src="../img/s_01.png" class="img s_01_img">
+            <img src="../img/s_02.png" class="img s_02_img">
+            <img src="../img/s_03.png" class="img s_03_img">
+            <img src="../img/s_04.png" class="img s_04_img">
+            <img src="../img/s_05.png" class="img s_05_img">
+            <img src="../img/s_06.png" class="img s_06_img">
+            </div>
+            <div class="s_01_memo">
+            <p><span style="font-weight:bold;">今のあなたには、メンターの存在が有効です。</span><br>
+            具体的な目標があるあなたは、あとは前に進んでいくのみ。<br>
+            自分の目指すメンターがいると、加速度的な前進ができるでしょう！</p>
+            </div>
+            <a href="index.html" class="return_btn" style="text-decoration: none;">トップページに戻る
+            <i class="fa-solid fa-square-caret-right"></i></a>
+            </div>
+        </div>
+    <!-- 提案⑤ ここまで -->
+
+            <!-- 提案⑥ ここから -->
+             <div id="answer_06" style="display: none;">
+                <p class="suggestion">ともに励まし合う仲間をつくろう</p>
+                <div class="suggestion_contents">
+                <div id="s_06">
+                <img src="../img/s_01.png" class="img s_01_img">
+                <img src="../img/s_02.png" class="img s_02_img">
+                <img src="../img/s_03.png" class="img s_03_img">
+                <img src="../img/s_04.png" class="img s_04_img">
+                <img src="../img/s_05.png" class="img s_05_img">
+                <img src="../img/s_06.png" class="img s_06_img">
+                </div>
+                <div class="s_01_memo">
+                <p><span style="font-weight:bold;">今のあなたには、コミュニティ参加がおすすめです。</span><br>
+                励まし合う存在がいることで、モチベーションも維持ができるはず。<br>
+                同じ目標を追う仲間とチームになって前進していこう。</p>
+                </div>
+                <a href="index.html" class="return_btn" style="text-decoration: none;">トップページに戻る　<i class="fa-solid fa-square-caret-right"></i></a>
+                </div>
+            </div> 
+        <!-- 提案⑥ ここまで -->
+    </div>
+
+    <!-- jQuery CDNを読み込む -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+
+    // 前の選択をすると、画面が切り替わる関数
+        $("#btn").on("click",function(){
+            $(this).closest("div").css("display","none");
+            id = $(this).attr("href");
+            $(id).addClass("fit").fadeIn("slow").show();
+        })
+
+        $(".btn").on("click",function(){
+            $(this).closest("div").css("display","none");
+            // // ボタンをクリックすると、親要素のdivをdisplay:none;にする
+            id = $(this).attr("href");
+            // 次の質問のhrefをidに格納する
+            $(id).addClass("fit").fadeIn("slow").show();
+            // 次の質問にfitというクラスをつけて出力をする
+    });
+
+     // data-valueでabcを選択した数を入れる変数を定義する
+    var countA;
+    var countB;
+    var countC;
+    var box =[];
+    $(".btn").each(function(){
+        $(this).on('click',function(){
+            var value = $(this).data("value");
+            console.log(value);
+            box.push(value);
+            // data-value値をboxに入れる
+        
+            countA = box.filter(function(x){
+                return x === "a"
+            }).length;
+            // aの数を変数countAに入れる
+
+            countB = box.filter(function(y){
+                return y === "b"
+            }).length;
+            // bの数を変数countBに入れる
+
+            countC = box.filter(function(z){
+                return z === "c"
+            }).length;
+            // cの数を変数countCに入れる
+
+            console.log("CountA:", countA);
+            console.log("CountB:", countB);
+            console.log("CountC:", countC);
+            console.log("box:", box);
+        });
+    });
+
+        //　各設問の選択数に応じて、回答を表示する
+        // 回答に応じて、ひとつの画像のみが色付きで表示されるようにする
+        // 【堀さんアドバイス】①最初から全てのcssを当てておいて、表示させるものだけをcss空にする方が楽
+        // 【堀さんアドバイス】②displayを使用するとjavascriptが当たらない💦
+    
+    $('.end').on('click',function(){
+        // やりたいことがない場合の提案①自己探究ワーク
+        if ( box[0] === 'a' ){
+            $('#answer_01').css("display","");
+            $("#s_01 .s_02_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_01 .s_03_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_01 .s_04_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_01 .s_05_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_01 .s_06_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+        // やりがいを感じた経験がない場合の提案②ワクワクワーク
+        } else if ( box[1] === 'a' ){
+            $('#answer_02').css("display","");
+            $("#s_02 .s_01_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_02 .s_03_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_02 .s_04_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_02 .s_05_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_02 .s_06_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+        // 何をしたら良いかわからない場合の提案③キャリア面談
+        } else if ( box[2] === 'a' ){
+            $('#answer_03').css("display","");
+            $("#s_03 .s_01_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_03 .s_02_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_03 .s_04_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_03 .s_05_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_03 .s_06_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+        // 明確にやりたいこととやるべきことが分かっている③メンター制度
+        } else if (box[0] === 'c' && box[1] === 'c' && box[2] === 'c' ){
+            $('#answer_04').css("display","");
+            $("#s_04 .s_01_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_04 .s_02_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_04 .s_03_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_04 .s_05_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_04 .s_06_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+        // やりたいことは明確だが、計画に不安がある場合の提案⑤プランニング
+        } else if (box[0] === 'c' && (box[2] === 'a' || box[2] === 'b')){
+            $('#answer_05').css("display","");
+            $("#s_05 .s_01_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_05 .s_02_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_05 .s_03_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_05 .s_04_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_05 .s_06_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+        // モチベーション不安がある場合⑥コミュニティへの参加
+        } else if (box[3] === 'b' ){
+            $('#answer_06').css("display","");
+            $("#s_06 .s_01_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_02_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_03_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_04_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_05_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+        // その他の回答の場合は、コミュニティへの参加
+        }　else {
+            $('#answer_06').css("display","");
+            $("#s_06 .s_01_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_02_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_03_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_04_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});
+            $("#s_06 .s_05_img").css({'filter':'grayscale(100%)','opacity':'50%','transition':'5s'});            
+        }
+    });
+
+    </script>
+</body>
+</html>
