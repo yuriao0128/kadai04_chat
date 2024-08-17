@@ -283,15 +283,3 @@ li {
     color: rgb(43, 195, 195);
     border: 2px solid rgb(43, 195, 195);
 }
-
-
-/* ステップバーをつくる */
-/* ステップバーのコンテナ */
-.stepper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: 20px auto;
-    position: relative;
-}
