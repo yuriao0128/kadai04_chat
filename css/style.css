@@ -74,8 +74,6 @@ body {
     width: 100%;
 }
 
-
-
 .top_msg {
     position: absolute;
     top: 50%;
@@ -87,6 +85,44 @@ body {
     padding:0;
 }
 
+/* トップをレスポンシブルで縦並びに */
+@media (max-width: 888px) {
+    .top {
+        display: block;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .top_msg {
+        width: 80%;
+    }
+
+    .top02 img {
+        width: 80%;
+    }
+
+    section.top01 {
+        margin-bottom: 40px;
+    }
+
+    .top01 img {
+        display: none;
+    }
+
+    .top01 {
+        padding-bottom: 100px;
+    }
+
+    .top01 h1 {
+        display: none;
+    }
+
+    .top01, .top02 {
+        margin: 0;
+    }
+}
+
+    
 /* 文字列よりも短い線を下線として引く */
 .question::after {
     position:absolute;
@@ -236,7 +272,7 @@ li {
 .return_btn {
     color: white;
     background-color: rgb(43, 195, 195);
-    padding:10px 50px;
+    padding:10px 30px;
     border: none;
     border-radius: 10px;
     font-weight: bold;
