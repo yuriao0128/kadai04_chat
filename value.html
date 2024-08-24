@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- fontawesomeを埋め込み -->
+        <script src="https://kit.fontawesome.com/ef226e501a.js" crossorigin="anonymous"></script>
+        <!-- googleフォント埋め込み -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Dela+Gothic+One&family=Rampart+One&family=Shizuru&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+        
+        <!-- googleフォント埋め込みここまで -->
+        <!-- css読み込み -->
+        <link rel="stylesheet" type="text/css" href="css/value.css">
+        <!-- Sortable.jsの読み込み
+        ドラッグ＆ドロップができるようにするための仕組み-->
+    <title>価値観ワーク</title>
+</head>
+    <body>
+     <!-- タイトルロゴ -->
+     <div class="app-theme">
+        <p class="tytle-logo"><span>C</span>areer <span>S</span>tep <span>N</span>avi</p>
+    </div>
+
+    <div class="main_contents">
+    <img src="img/s_01.png" class="img">
+    <img src="img/s_02.png" class="s_img">
+    <img src="img/s_03.png" class="img">
+    <img src="img/s_04.png" class="img">
+    <img src="img/s_05.png" class="img">
+    <img src="img/s_06.png" class="img">
+    <h1>価値観ワーク</h1>
+    <div class="rule">
+        <div class="rule_tape"></div>
+        <p class="rule_title">ルール説明</p>
+        <p class="rule_message">今自分が大切にしている価値観と直感で向き合うためのワークです。<br>
+        <span>STEP1.</span> リストの中から自分の大切にしているキーワードを5つ選んでください。<br>
+        <span>STEP2.</span> 価値観フィールドを眺めながら、重要だと思う順のランク付けをしてみましょう。</p>
+    </div>
+    <ul>
+        <li><input type="checkbox" value="誠実さ">誠実さ</li>
+        <li><input type="checkbox" value="達成">達成</li>
+        <li><input type="checkbox" value="権威">権威</li>
+        <li><input type="checkbox" value="創造性">創造性</li>
+        <li><input type="checkbox" value="家族">家族</li>
+        <li><input type="checkbox" value="成長">成長</li>
+        <li><input type="checkbox" value="冒険">冒険</li>
+        <li><input type="checkbox" value="平和">平和</li>
+        <li><input type="checkbox" value="友情">友情</li>
+        <li><input type="checkbox" value="愛">愛</li>
+        <li><input type="checkbox" value="安定">安定</li>
+        <li><input type="checkbox" value="金">金</li>
+        <li><input type="checkbox" value="地位">地位</li>
+    </ul>
+    <input type="button" id="selectbtn" value="選択して並び替え">
+
+<!-- 選択した価値観が入る箱をつくる -->
+<div class="selected-values">
+    <div class="field_title">
+        <p><i class="fa-solid fa-backward"></i><i class="fa-solid fa-backward"></i></p>
+        <h2>価値観フィールド</h2>
+        <p><i class="fa-solid fa-forward"></i><i class="fa-solid fa-forward"></i></p>
+    </div>
+    <div class="value_message">
+        <p>5つの価値観を選択し、左から順に重要だと思うランキングで並べてください。</p>
+    <div id="sortableArea"></div>
+    </div>
+    <button id="save">ランキングを保存</button>
+</div>
+
+<button id="show">過去の結果を表示</button>
+    <div class="past_message" style="display: none;">
+    <div class="date-display" id="dateDisplay"></div>
+    <div id="pastResults"></div>
+    </div>
+</div>
+
+<!-- jQuery CDNを読み込む -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- ドラック＆ドロップを使うためにUIを追加 -->
+<!-- jQuery UIのCSSを読み込む -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- jQuery UIのJavaScriptを読み込む -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+
+// 選択ボタンをクリックした際にフィールド内に項目が入るようにする
+$("#selectbtn").on('click',function(){
+    var count = $(':checkbox:checked');
+    if(count.length < 5 ){
+        alert('5つの価値観を選択してください。');
+        return;
+    }
+    if(count.length > 5 ){
+        alert('5つ以上の価値観が選択されています。');
+        return;
+    }
+
+    $("#sortableArea").empty(); //←同じデータが入らないように空にする
+// 全てのチェックされている値を繰り返しvalue内に入れる処理
+
+    $(':checkbox:checked').each(function(){
+        var value = $(this).val();
+        console.log(value);
+// sortableAreaの中に新たなdivを追加していく処理
+    $('#sortableArea').append('<img src="img/'+ value + '.png" class="sortable-image" data-id="'+ value +'">');
+});
+
+});
+
+// ドラッグ＆ドロップで要素を動かせるようにする
+// sortableメソッドが並び変えを可能にする
+    $('#sortableArea').sortable({
+        update: function(event,ui){
+            var sortedValues = $(this).sortable('toArray',{attribute: 'data-id'});
+            console.log('並び順:', sortedValues);
+        }
+});
+
+// ドラッグ中に選択されてしまうのを防ぐ
+$('#sortableArea').disableSelection();
+
+$("#save").on('click', function() {
+    var sortedValues = $("#sortableArea").sortable('toArray', {attribute: 'data-id'});
+    var currentDate = new Date().toLocaleDateString();
+    var dataToSave = {
+        date: currentDate,
+        values: sortedValues
+    };
+    localStorage.setItem('savedValuesWithDate', JSON.stringify(dataToSave));
+    alert('価値観を保存しました');
+});
+
+$("#show").on('click', function() {
+    var savedData = localStorage.getItem('savedValuesWithDate');
+    if (savedData) {
+        savedData = JSON.parse(savedData);
+        $("#dateDisplay").html('前回、価値観ワークをした日付は、 ' + savedData.date +  'です。<br>前回の価値観ワークと比べてみよう！');
+        $('.past_message').css('display','block');
+        $("#pastResults").empty(); // 過去の結果エリアをクリア
+        savedData.values.forEach(function(value) {
+            $('#pastResults').append('<img src="img/'+ value + '.png" class="past-value-item">');
+        });
+    } else {
+    }
+});
+
+
+</script>
+</body>
+</html>

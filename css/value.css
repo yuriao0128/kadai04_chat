@@ -1,0 +1,226 @@
+
+body {
+    background-color: #f0f8ff;
+    font-family:sans-serif;
+    text-align: center;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.tytle-logo {
+    font-family: "Alegreya Sans";
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #b5b8b9;
+    padding-bottom: 20px;
+}
+
+/* 文字の一部だけ色を変更 */
+.tytle-logo span {
+    color: rgb(43, 195, 195);
+}
+
+
+ul {
+    font-family: "ヒラギノ角ゴ ProN W3";
+    font-weight: bold;
+    font-size:18px;
+    width: 400px;
+    margin:0 auto;
+    column-count: 3;
+    text-align: left;
+}
+
+li {
+    list-style: none;
+}
+
+.main_icons {
+    display: flex;
+}
+
+.img {
+    margin:10px;
+    width: 70px;
+    filter:grayscale(100%);
+}
+
+.s_img {
+    margin:10px;
+    width: 100px;
+}
+
+#s_01_img {
+    filter:initial;
+}
+
+.main_contents {
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 10%;
+    width: 90%;
+}
+
+.field_title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+}
+
+.fa-solid {
+    margin-right:10px;
+    margin-left:10px;
+    color:rgb(43, 195, 195);
+}
+
+
+/* タイトル「価値観ワーク」のロゴ */
+h1 {
+    font-family: "Rampart One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:50px;
+    margin: 0px 20px;
+    }
+
+h2 {
+    font-family: "Rampart One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:30px;
+    margin: 0px;
+    }
+
+/* ルール説明のロゴ */
+.rule {
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+
+/* セロハンテープで貼ったメモ */
+.rule {
+    width: 60%;
+    padding: 15px;
+    margin: 2em auto;
+    background: #f7f092;/* 紙の色 */
+    color: #000;/* 文字色 */
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.03);transform:rotate(2deg);
+    word-break: break-all;
+    }
+
+.rule p {
+    margin: 0; 
+    padding: 0;
+    font-size: 0.9em;
+}
+.rule_tape {
+    width: 50%;
+    height: 35px;
+    margin: -25px auto 0;
+    background: #989898;
+    transform: rotate(-3deg);
+    opacity: 0.1;
+}
+.rule_title {
+    text-align: center;
+    font-size: 1.3em!important;
+    margin-top: 10px!important;
+    font-weight: bold;
+}
+
+.value_message {
+    height: 220px;
+    width: 90%;
+    background-color: rgb(249, 250, 203);
+    text-align: center;
+    margin:0 auto;
+    margin-top:2px;
+    border-radius: 20px;
+}
+
+.value_message p {
+    padding-top:20px;
+}
+
+.date-display {
+    padding: 20px;
+
+}
+
+.past_message {
+    height: 200px;
+    width: 90%;
+    background-color: rgb(249, 250, 203);
+    text-align: center;
+    margin:0 auto;
+    border-radius: 20px;  
+}
+
+
+/* 価値観カード */
+#pastResults img {
+    width: 200px ;
+    height: 140px ;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+#sortableArea img {
+    width: 200px ;
+    height: 140px ;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+
+ #show {
+    margin-top: 30px;
+    margin-bottom:50px;
+    color: white;
+    background-color: rgb(43, 195, 195);
+    padding:10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+ #show:hover {
+    background-color: #fff;
+    color: rgb(43, 195, 195);
+    border: 2px solid rgb(43, 195, 195);
+}
+
+#save {
+    margin-top: 30px;
+    color: white;
+    background-color: rgb(43, 195, 195);
+    padding:10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+ #save:hover {
+    background-color: #fff;
+    color: rgb(43, 195, 195);
+    border: 2px solid rgb(43, 195, 195);
+}
+
+#selectbtn {
+    margin: 30px;
+    color: white;
+    background-color: rgb(43, 195, 195);
+    padding:10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+ #selectbtn:hover {
+    background-color: #fff;
+    color: rgb(43, 195, 195);
+    border: 2px solid rgb(43, 195, 195);
+}
