@@ -5,14 +5,36 @@ body {
     text-align: center;
     padding-left:30px;
     padding-right:30px;
+    margin-bottom:200px;
+}
+
+.app-theme {
+    border-bottom: 1px solid #b5b8b9;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #f0f8ff; /* 背景色を設定 */
+    z-index: 1000; /* 他の要素の上に表示されるようにする */
+    padding: 10px 0; /* 上下のパディングを追加 */
 }
 
 .tytle-logo {
     font-family: "Alegreya Sans";
     font-size: 30px;
     font-weight: bold;
-    border-bottom: 1px solid #b5b8b9;
-    padding-bottom: 20px;
+    text-align: center;
+}
+
+.home_link {
+    text-decoration: none;
+    color:rgb(43, 195, 195);
+    position: absolute;
+    right: 30px;
 }
 
 /* 文字の一部だけ色を変更 */
@@ -22,12 +44,11 @@ body {
 
 
 ul {
-    font-family: "ヒラギノ角ゴ ProN W3";
-    font-weight: bold;
-    font-size:18px;
+    font-family: "Meiryo";
+    font-size:16px;
     width: 400px;
     margin:0 auto;
-    column-count: 3;
+    column-count: 4;
     text-align: left;
 }
 
@@ -55,10 +76,10 @@ li {
 }
 
 .main_contents {
-    background-color: white;
-    margin: 0 auto;
-    border-radius: 10%;
+    margin:150px auto 0;
+    border-radius: 10%; 
     width: 90%;
+    height: 90%;
 }
 
 .field_title {
@@ -78,7 +99,7 @@ li {
 
 /* タイトル「価値観ワーク」のロゴ */
 h1 {
-    font-family: "Rampart One", sans-serif;
+    font-family: "Kaisei Decol", serif;
     font-weight: 400;
     font-style: normal;
     font-size:50px;
@@ -86,7 +107,7 @@ h1 {
     }
 
 h2 {
-    font-family: "Rampart One", sans-serif;
+    font-family: "Kaisei Decol", serif;
     font-weight: 400;
     font-style: normal;
     font-size:30px;
@@ -134,51 +155,119 @@ h2 {
 .value_message {
     height: 220px;
     width: 90%;
-    background-color: rgb(249, 250, 203);
     text-align: center;
     margin:0 auto;
-    margin-top:2px;
     border-radius: 20px;
 }
 
-.value_message p {
-    padding-top:20px;
-}
-
 .date-display {
-    padding: 20px;
 
+    font-size:20px;
+    font-family: "Caveat", cursive;
+    font-style: normal;    
 }
 
 .past_message {
-    height: 200px;
-    width: 90%;
-    background-color: rgb(249, 250, 203);
+    height: auto;
     text-align: center;
-    margin:0 auto;
-    border-radius: 20px;  
+    margin: 20px auto;
+    border-radius: 20px;
+    padding-bottom:50px;
 }
 
 
 /* 価値観カード */
-#pastResults img {
-    width: 200px ;
-    height: 140px ;
-    border: 1px solid gray;
+#pastResults {
+    width: 90%;
+    min-height: 100px;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 10px;
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#sortableArea img {
-    width: 200px ;
-    height: 140px ;
-    border: 1px solid gray;
+#sortableArea {
+    width: 90%;
+    min-height: 100px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#pastResults, #sortableArea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.past-value-item{
+    width: 120px;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.sortable-image {
+    width: 120px;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.btn_field {
+    text-align: center;
+    margin-top:20px;
 }
 
 
- #show {
-    margin-top: 30px;
-    margin-bottom:50px;
+button {
+    display: inline-block;
+    margin: 30px; 
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: rgb(43, 195, 195);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #fff;
+    color: rgb(43, 195, 195);
+    border: 2px solid rgb(43, 195, 195);
+}
+
+/* スマホサイズでの調整 */
+@media (max-width: 600px) {
+    #sortableArea {
+        width: 90%;
+        margin: 0 auto;
+    }
+    ul {
+        width: 70%;
+        column-count: 2;
+    }
+}
+
+/* ボタンのCSSを設定 */
+#show {
+    margin-top: 40px;
+    margin-bottom:20px;
     color: white;
     background-color: rgb(43, 195, 195);
     padding:10px 30px;

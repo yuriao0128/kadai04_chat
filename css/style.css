@@ -4,6 +4,26 @@ body {
     text-align: center;
     padding-left:30px;
     padding-right:30px;
+    padding-top:130px;
+}
+
+.app-theme {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.app-theme.fixed {
+    position: fixed; /* 固定する */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #f0f8ff; /* 背景色を設定 */
+    border-bottom: 1px solid #b5b8b9;
+    z-index: 1000; /* 他の要素より上に表示 */
+    padding: 10px 0; /* 上下のパディング */
 }
 
 /* googleフォントを取得 */
@@ -11,13 +31,19 @@ body {
     font-family: "Alegreya Sans";
     font-size: 30px;
     font-weight: bold;
-    border-bottom: 1px solid #b5b8b9;
-    padding-bottom: 20px;
+    text-align: center;
 }
 
 /* 文字の一部だけ色を変更 */
 .tytle-logo span {
     color: rgb(43, 195, 195);
+}
+
+.value_link {
+    text-decoration: none;
+    color:rgb(43, 195, 195);
+    position: absolute;
+    right:30px;
 }
 
 .btn {
@@ -32,7 +58,6 @@ body {
 /* 質問選択部分をメモがめくれたように可愛くする */
 .option {
     width: 80%;
-
     padding:2em;/*内側余白*/
 	background-color :#fff;/*メモ全体の背景色*/
 	position:relative;
@@ -48,7 +73,6 @@ body {
 	border-color: rgb(43, 195, 195) #f0f8ff  rgb(43, 195, 195);/*メモめくれ色*/
 	box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);    
 }
-
 
 .question {
     font-weight: bold;
@@ -157,7 +181,6 @@ li {
     font-size: 20px;
     font-weight: bold;
     color:rgb(43, 195, 195);
-    margin:2em 0;
     position: relative;
     padding: 0.5em 1.5em;
     border-top: solid 2px rgb(43, 195, 195);

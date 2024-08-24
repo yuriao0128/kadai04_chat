@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Dela+Gothic+One&family=Rampart+One&family=Shizuru&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap" rel="stylesheet">
         
         <!-- googleフォント埋め込みここまで -->
         <!-- css読み込み -->
@@ -22,6 +23,7 @@
      <!-- タイトルロゴ -->
      <div class="app-theme">
         <p class="tytle-logo"><span>C</span>areer <span>S</span>tep <span>N</span>avi</p>
+        <a href="index.html" class="home_link">ホームへ戻る<i class="fa fa-solid fa-house"></i></a>
     </div>
 
     <div class="main_contents">
@@ -37,7 +39,7 @@
         <p class="rule_title">ルール説明</p>
         <p class="rule_message">今自分が大切にしている価値観と直感で向き合うためのワークです。<br>
         <span>STEP1.</span> リストの中から自分の大切にしているキーワードを5つ選んでください。<br>
-        <span>STEP2.</span> 価値観フィールドを眺めながら、重要だと思う順のランク付けをしてみましょう。</p>
+        <span>STEP2.</span> 価値観フィールドを眺めながら、重要だと思う順のランク付けをしてみましょう。<br>
     </div>
     <ul>
         <li><input type="checkbox" value="誠実さ">誠実さ</li>
@@ -53,6 +55,17 @@
         <li><input type="checkbox" value="安定">安定</li>
         <li><input type="checkbox" value="金">金</li>
         <li><input type="checkbox" value="地位">地位</li>
+        <li><input type="checkbox" value="貢献">貢献</li>
+        <li><input type="checkbox" value="信頼">信頼</li>
+        <li><input type="checkbox" value="変化">変化</li>
+        <li><input type="checkbox" value="快適">快適</li>
+        <li><input type="checkbox" value="責任">責任</li>
+        <li><input type="checkbox" value="目的">目的</li>
+        <li><input type="checkbox" value="伝統">伝統</li>
+        <li><input type="checkbox" value="美">美</li>
+        <li><input type="checkbox" value="寛容">寛容</li>
+        <li><input type="checkbox" value="自由">自由</li>
+        <li><input type="checkbox" value="知識">知識</li>
     </ul>
     <input type="button" id="selectbtn" value="選択して並び替え">
 
@@ -66,14 +79,13 @@
     <div class="value_message">
         <p>5つの価値観を選択し、左から順に重要だと思うランキングで並べてください。</p>
     <div id="sortableArea"></div>
-    </div>
-    <button id="save">ランキングを保存</button>
-</div>
-
-<button id="show">過去の結果を表示</button>
+    <button id="save">価値観を保存する</button>
+    <button id="show">前回の結果を表示</button>
     <div class="past_message" style="display: none;">
     <div class="date-display" id="dateDisplay"></div>
     <div id="pastResults"></div>
+    </div>
+    </div>
     </div>
 </div>
 
@@ -137,7 +149,7 @@ $("#show").on('click', function() {
     var savedData = localStorage.getItem('savedValuesWithDate');
     if (savedData) {
         savedData = JSON.parse(savedData);
-        $("#dateDisplay").html('前回、価値観ワークをした日付は、 ' + savedData.date +  'です。<br>前回の価値観ワークと比べてみよう！');
+        $("#dateDisplay").html('date:'+ savedData.date);
         $('.past_message').css('display','block');
         $("#pastResults").empty(); // 過去の結果エリアをクリア
         savedData.values.forEach(function(value) {
