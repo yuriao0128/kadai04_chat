@@ -5,7 +5,7 @@ body {
     text-align: center;
     padding-left:30px;
     padding-right:30px;
-    margin-bottom:200px;
+    margin-bottom:60px;
 }
 
 .app-theme {
@@ -76,6 +76,7 @@ li {
 }
 
 .main_contents {
+    background-color: white;
     margin:150px auto 0;
     border-radius: 10%; 
     width: 90%;
@@ -153,7 +154,6 @@ h2 {
 }
 
 .value_message {
-    height: 220px;
     width: 90%;
     text-align: center;
     margin:0 auto;
