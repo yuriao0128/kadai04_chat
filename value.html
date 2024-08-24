@@ -20,7 +20,7 @@
     <title>価値観ワーク</title>
 </head>
     <body>
-     <!-- タイトルロゴ -->
+<!-- タイトルロゴ -->
      <div class="app-theme">
         <p class="tytle-logo"><span>C</span>areer <span>S</span>tep <span>N</span>avi</p>
         <a href="index.html" class="home_link">ホームへ戻る<i class="fa fa-solid fa-house"></i></a>
@@ -81,6 +81,8 @@
     <div id="sortableArea"></div>
     <button id="save">価値観を保存する</button>
     <button id="show">前回の結果を表示</button>
+
+<!-- 前回の結果を表示ボタンを押して出現させる -->
     <div class="past_message" style="display: none;">
     <div class="date-display" id="dateDisplay"></div>
     <div id="pastResults"></div>
@@ -133,7 +135,6 @@ $("#sortableArea").empty(); //←同じデータが入らないように空に�
 
 // ドラッグ中に選択されてしまうのを防ぐ
 $('#sortableArea').disableSelection();
-
 $("#save").on('click', function() {
     var sortedValues = $("#sortableArea").sortable('toArray', {attribute: 'data-id'});
     var currentDate = new Date().toLocaleDateString();

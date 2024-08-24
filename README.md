@@ -34,6 +34,7 @@ https://yuriao0128.github.io/kadai03_memo/index.html
 
 - ［質問］githubがまだ理解しきれておらず、毎回エラーが出てきますが
   検索しても分からずTUTORさんへ相談しながら何とかデプロイできている状況です。
+<<<<<<< HEAD
   github/jQuery/localstrageについての理解を深めるために、良い学習方法はありますか。
 
 - [参考］https://prog-8.com/
@@ -41,3 +42,6 @@ https://yuriao0128.github.io/kadai03_memo/index.html
   
 
 
+=======
+  githubについての理解を深めるために、良い学習方法はありますか。
+>>>>>>> 85ee0f2 (main)

@@ -161,7 +161,7 @@ body {
 
 .btn:hover {
     background-color: rgb(43, 195, 195);
-    border-radius: 5px;
+    border-radius: 3px;
     color:#fff;
 }
 
@@ -173,6 +173,17 @@ ul {
 li {
     list-style: none;
     padding:10px;
+}
+
+a.btn {
+    border-bottom: 2px solid rgb(43, 195, 195);
+    border-left: 2px solid rgb(43, 195, 195);
+    border-top: 2px solid rgb(227, 234, 234);
+    border-right: 2px solid rgb(227, 234, 234);
+    border-radius: 3px;
+    width: 60%;
+    display:inline-block;
+    text-align: center;
 }
 
 
