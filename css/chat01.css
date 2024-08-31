@@ -1,0 +1,299 @@
+body {
+  background-color: #f0f8ff;
+  font-family: sans-serif;
+}
+
+.main_contents {
+  background-color: white;
+  margin: 150px auto 0;
+  border-radius: 10%;
+  width: 90%;
+  height: 90%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+}
+
+.img {
+  margin: 10px;
+  width: 70px;
+  filter: grayscale(100%);
+}
+
+.s_img {
+  margin: 10px;
+  width: 100px;
+}
+
+.app-theme {
+  border-bottom: 1px solid #b5b8b9;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #f0f8ff; /* 背景色を設定 */
+  z-index: 1000; /* 他の要素の上に表示されるようにする */
+  padding: 10px 0; /* 上下のパディングを追加 */
+}
+
+.tytle-logo {
+  font-family: "Alegreya Sans";
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.home_link {
+  text-decoration: none;
+  color: rgb(43, 195, 195);
+  position: absolute;
+  right: 30px;
+}
+
+/* 文字の一部だけ色を変更 */
+.tytle-logo span {
+  color: rgb(43, 195, 195);
+}
+
+#contents {
+  padding-top: 120px;
+}
+
+#uname,
+#text,
+#send,
+select {
+  resize: none;
+  border: 1px solid rgb(102, 198, 198);
+  outline: none;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+.timestamp {
+  display: block;
+  font-size: 0.8em;
+  color: gray;
+  margin-top: 5px;
+}
+
+/* タイトル「キャリア相談」のロゴ */
+h1 {
+  font-family: "Kaisei Decol", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  margin: 0px 20px;
+}
+
+h2 {
+  font-family: "Kaisei Decol", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  margin: 0px;
+}
+
+/* ルール説明のロゴ */
+.rule {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* セロハンテープで貼ったメモ */
+.rule {
+  width: 60%;
+  padding: 15px;
+  margin: 2em auto;
+  background: #f7f092; /* 紙の色 */
+  color: #000; /* 文字色 */
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.03);
+  transform: rotate(2deg);
+  word-break: break-all;
+}
+
+.rule p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9em;
+}
+.rule_tape {
+  width: 50%;
+  height: 35px;
+  margin: -25px auto 0;
+  background: #989898;
+  transform: rotate(-3deg);
+  opacity: 0.1;
+}
+.rule_title {
+  text-align: center;
+  font-size: 1.3em !important;
+  margin-top: 10px !important;
+  font-weight: bold;
+}
+/* 投稿フォーム */
+
+#send {
+  display: inline-block;
+  margin: 30px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: rgb(43, 195, 195);
+  color: white;
+  cursor: pointer;
+  width: 60%;
+  padding: 10px;
+}
+
+#send:hover {
+  background-color: #fff;
+  color: rgb(43, 195, 195);
+  border: 2px solid rgb(43, 195, 195);
+}
+
+.like-button,
+.remove,
+.update,
+.comment-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.post_field {
+  /* background-color: #1662a4; */
+  width: 60%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.post_field span {
+  padding-left: 10px;
+  color: rgb(43, 195, 195);
+  font-size: 12px;
+}
+
+.post {
+  width: 90%;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+textarea,
+input,
+select {
+  width: 80%;
+  font-family: sans-serif;
+}
+
+textarea {
+  padding: 5px;
+  height: 100px;
+}
+
+.post p {
+  font-family: "Zen Maru Gothic", serif;
+  width: 80%;
+  align-items: center;
+  margin: 0 auto;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.post2 {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+textarea::placeholder {
+  color: #b5b8b9;
+  font-family: sans-serif;
+}
+
+#output {
+  border-top: 6px dotted rgb(204, 232, 232);
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#output p {
+  font-family: "Zen Maru Gothic", serif;
+  font-size: 14px;
+  width: 70%;
+  text-align: left;
+  margin: 30px;
+  padding: 10px;
+  background-color: rgb(239, 244, 244);
+  border-radius: 20px;
+}
+
+.fa-solid {
+  padding: 5px;
+}
+
+.comment_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 投稿へのコメント欄のCSS */
+.comment-text {
+  border: none;
+  resize: none;
+  outline: none;
+  width: 80%;
+  height: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(239, 244, 244);
+  font-family: "Zen Maru Gothic", serif;
+}
+
+.comment-form {
+  background-color: rgb(239, 244, 244);
+  border-left: 3px solid rgb(43, 195, 195);
+  width: 67%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  height: 50px;
+}
+
+.comments {
+  font-family: "Zen Maru Gothic", serif;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.comment {
+  font-size: 14px;
+  width: 80%;
+  text-align: left;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.fa-user {
+  font-size: 18px;
+  padding: 10px;
+}

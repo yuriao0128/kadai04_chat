@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- cssを読み込む -->
-        <link rel="stylesheet" type="text/css" href="chat01.css" />
+        <link rel="stylesheet" type="text/css" href="css/chat01.css" />
         <!-- fontawesomeを埋め込み -->
         <script
           src="https://kit.fontawesome.com/ef226e501a.js"
@@ -40,7 +40,7 @@
 </head>
 <body>
 
-    <!-- コンテンツ表示画面 -->
+    <!-- トップの画像コンテンツ表示 -->
     <div class="main_contents">
       <img src="img/s_01.png" class="img" />
       <img src="img/s_02.png" class="img" />
@@ -48,26 +48,28 @@
       <img src="img/s_04.png" class="img" />
       <img src="img/s_05.png" class="img" />
       <img src="img/s_06.png" class="img" />
-      <h1>キャリア相談</h1>
+      <h1>キャリア相談</h1> 
       <div class="rule">
         <div class="rule_tape"></div>
-        <p class="rule_title">相談方法</p>
+        <p class="rule_title">利用方法</p>
         <p class="rule_message">
-          相談したいジャンルを選択し気軽に投稿をしてみましょう。<br />
-          人事やキャリア相談のプロに相談ができます。<br />
-          客観的なアドバイスを受けることで、新たな視点か獲得できるはず！<br />
+          相談をしたいジャンルを選択し気軽に投稿をしてみましょう。<br />
+          人事やキャリアアドバイザーからフィードバックを受けることができます。<br />
+          客観的なアドバイスを受けることで、新たな視点か獲得できるはず。<br />
 
         </p>
       </div>
+      <!-- 投稿フォームをつくる　-->
         <div class="post_field">
         <div class="post2">
         <div class="post">
             <p>名前<span>必須</span></p><input type="text" id="uname">
         </div>
-        <!-- 相談項目プルダウンメニュー -->
+        <!-- 相談項目プルダウンメニューをつくる -->
         <div class="post">
           <label for="consultationType"><p>相談ジャンル</p></label>
           <select id="consultationType">
+              <option disabled selected value>選択してください</option>
               <option value="self-analysis">自己分析</option>
               <option value="career-consultation">キャリア相談</option>
               <option value="job-change">転職相談</option>
@@ -110,12 +112,12 @@
       
         // Your web app's Firebase configuration
         const firebaseConfig = {
-          apiKey: "AIzaSyC_ij8402brRhBGNaSqBVwhdNuo_rKX1kU",
-          authDomain: "chat01-53626.firebaseapp.com",
-          projectId: "chat01-53626",
-          storageBucket: "chat01-53626.appspot.com",
-          messagingSenderId: "601208725999",
-          appId: "1:601208725999:web:e7a43006dcab572aa4d61a"
+          apiKey: "",
+          authDomain: "",
+          projectId: "",
+          storageBucket: "",
+          messagingSenderId: "",
+          appId: ""
         };
       
         // Initialize Firebase
@@ -149,7 +151,7 @@
   });
 }
 
-        //データ登録(Click) - firebaseの保存するデータプロパティ
+    //データ登録(Click) - firebaseの保存するデータプロパティ
 $("#send").on("click",function() {
 
 // 必須フィールドがブランクの場合はアラートを出す
@@ -161,11 +163,11 @@ const text = $("#text").val().trim();
         alert("必須項目を入力してください。");
         return; // ここで処理を終了
     }
- 
+    // 必須項目が入力できたら登録する
     const msg = {
-        uname: $("#uname").val(),
-        text: $("#text").val(),
-        consultationType: $("#consultationType").val(),
+        uname: $("#uname").val(),//名前を追加
+        text: $("#text").val(),//本文を追加
+        consultationType: $("#consultationType").val(),//相談ジャンルを追加
         timestamp: new Date().toISOString() //現在の日時と時刻を追加
     }
     const newPostRef = push(dbRef); //ユニークKEYを生成
@@ -191,7 +193,7 @@ $(document).on('click', '.like-button', function() {
   incrementLike(messageId);
 });
 
-// 相談項目のマッピング
+// 相談項目のマッピング [firebaseからの取り出し時に使用]
 const consultationTypeMap = {
     'self-analysis': '自己分析',
     'career-consultation': 'キャリア相談',
@@ -223,8 +225,20 @@ onChildAdded(dbRef, function(data){
         h +='<span class="update" data-key="'+key+'"><i class="fa-solid fa-pen-to-square" style="color: rgb(43, 195, 195);"></i></span>';
         // いいねボタン追加
         h += '<button class="like-button" data-id="'+ key +'"><i class="fa-solid fa-thumbs-up" style="color: rgb(43, 195, 195);"></i>'+ (like !== undefined ? like : 0) +'</button>';
+        // // コメント表示ボタンを追加
+        h += '<span class="show-comment-button" data-id="' + key + '"><i class="fa-solid fa-comments" style="color: rgb(43, 195, 195);"></i></span>';
         h += "</p>";
-        h += "</div>"
+        h += '</div>';
+
+        // // コメントセクションを初期状態で非表示にする
+        h += '<div class="comment-section" id="comment-section-' + key + '" style="display:none;">';
+        h += '<div class="comments" id="comments-' + key + '"></div>'; // コメントを表示するセクション
+        h += '<div class="comment-form" id="comment-form-' + key + '">';
+        h += '<textarea class="comment-text" data-id="' + key + '" placeholder="コメントを入力..."></textarea>';
+        h += '<button class="comment-button" data-id="' + key + '"><i class="fa-solid fa-paper-plane" style="color: #2bc3c3;"></i></button>';
+        h += '</div>'; // コメントセクション終了
+
+        // h += "</div>";
         $("#output").append(h); //#outputの最後に追加
       });
 
@@ -253,7 +267,7 @@ onChildAdded(dbRef, function(data){
 
     onChildChanged(dbRef, (data) => {
     $("#" + data.key + '_update').html(data.val().text);
-    $("#" + data.key + '_update').fadeOut(800).fadeIn(800);
+
 });
 
 // Likeを更新
@@ -266,7 +280,46 @@ onChildChanged(dbRef, function (data) {
     $('.like-button[data-id="' + key + '"]').html('<i class="fa-solid fa-thumbs-up" style="color: rgb(43, 195, 195);"></i>' + (like !== undefined ? like : 0));
 });
 
+// コメントボタンを押して、コメント欄を表示
+$(document).on('click', '.show-comment-button', function() {
+    const messageId = $(this).data('id');
+    $('#comment-section-' + messageId).toggle(); // コメントセクションを表示/非表示
+});
 
+// コメント送信ボタンのクリックイベントを設定
+$(document).on('click', '.comment-button', function() {
+    const messageId = $(this).data('id');
+    const commentText = $('.comment-text[data-id="' + messageId + '"]').val().trim();
+
+//ブランクの場合はアラート
+    if (commentText === "") {
+        alert("コメントを入力してください。");
+        return;
+    }
+    // コメントをFirebaseに保存
+    const commentRef = push(ref(db, 'chat/' + messageId + '/comments'));
+    set(commentRef, {
+        text: commentText,
+        timestamp: new Date().toISOString()
+    });
+
+    // コメント入力フィールドをクリア
+    $('.comment-text[data-id="' + messageId + '"]').val('');
+});
+
+// コメントをリアルタイムで取得して表示
+onChildAdded(dbRef, function(data) {
+    const msg = data.val();    
+    const key = data.key;      
+    
+    // コメントの表示処理
+    const commentRef = ref(db, 'chat/' + key + '/comments');
+    onChildAdded(commentRef, function(commentData) {
+        const comment = commentData.val();
+        const commentHtml = '<div class="comment"><i class="fa-regular fa-user" style="color: #2bc3c3;"></i><span class="comment-timestamp">' + new Date(comment.timestamp).toLocaleString() + '</span> - ' + comment.text + '</div>';
+        $('#comments-' + key).append(commentHtml);
+    });
+});
 </script> 
 </body>
 </html>
