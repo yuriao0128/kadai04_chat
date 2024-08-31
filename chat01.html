@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- cssを読み込む -->
+        <link rel="stylesheet" type="text/css" href="chat01.css" />
+        <!-- fontawesomeを埋め込み -->
+        <script
+          src="https://kit.fontawesome.com/ef226e501a.js"
+          crossorigin="anonymous"
+        ></script>
+          <!-- googleフォント埋め込み -->
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Dela+Gothic+One&family=Rampart+One&family=Shizuru&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap"
+            rel="stylesheet"
+          />
+          <!-- googleフォント埋め込みここまで -->
+        <title>キャリア相談</title>
+      </head>
+        <!-- タイトルロゴ -->
+        <div class="app-theme">
+          <p class="tytle-logo">
+            <span>C</span>areer <span>S</span>tep <span>N</span>avi
+          </p>
+          <a href="index.html" class="home_link"
+            >ホームへ戻る<i class="fa fa-solid fa-house"></i
+          ></a>
+        </div>
+</head>
+<body>
+
+    <!-- コンテンツ表示画面 -->
+    <div class="main_contents">
+      <img src="img/s_01.png" class="img" />
+      <img src="img/s_02.png" class="img" />
+      <img src="img/s_03.png" class="s_img" />
+      <img src="img/s_04.png" class="img" />
+      <img src="img/s_05.png" class="img" />
+      <img src="img/s_06.png" class="img" />
+      <h1>キャリア相談</h1>
+      <div class="rule">
+        <div class="rule_tape"></div>
+        <p class="rule_title">相談方法</p>
+        <p class="rule_message">
+          相談したいジャンルを選択し気軽に投稿をしてみましょう。<br />
+          人事やキャリア相談のプロに相談ができます。<br />
+          客観的なアドバイスを受けることで、新たな視点か獲得できるはず！<br />
+
+        </p>
+      </div>
+        <div class="post_field">
+        <div class="post2">
+        <div class="post">
+            <p>名前<span>必須</span></p><input type="text" id="uname">
+        </div>
+        <!-- 相談項目プルダウンメニュー -->
+        <div class="post">
+          <label for="consultationType"><p>相談ジャンル</p></label>
+          <select id="consultationType">
+              <option value="self-analysis">自己分析</option>
+              <option value="career-consultation">キャリア相談</option>
+              <option value="job-change">転職相談</option>
+              <option value="interview-preparation">面接対策</option>
+              <option value="other">その他</option>
+          </select>
+        </div>
+        </div>
+        <div class="post">
+            <p>相談内容を記載してください<span>必須</span></p>
+            <textarea id="text" cols="30" rows="10" placeholder="例：自分のやりたいことが見つからず困っています。"></textarea>
+            <br>
+            <button id="send">送信</button>
+        </div>
+        </div>
+        <div id="output" style="overflow: auto;height: 300px;"></div>
+    </div>
+
+    
+    <!-- jQueryを読み込む -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 以下firebase読み込み -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+        import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        update,
+        remove,
+        onChildAdded,
+        onChildChanged,
+        onChildRemoved,
+        runTransaction,
+      } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyC_ij8402brRhBGNaSqBVwhdNuo_rKX1kU",
+          authDomain: "chat01-53626.firebaseapp.com",
+          projectId: "chat01-53626",
+          storageBucket: "chat01-53626.appspot.com",
+          messagingSenderId: "601208725999",
+          appId: "1:601208725999:web:e7a43006dcab572aa4d61a"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db  = getDatabase(app); //RealtimeDBに接続
+        const dbRef = ref(db,"chat"); //RealtimeDB内の"chat"を使う
+        function incrementLike(messageId) {
+          const messageRef = ref(db, 'chat/' + messageId);
+
+//Like数の更新
+  runTransaction(messageRef, (currentValue) => {
+    if (currentValue) {
+      if (currentValue.likes) {
+        currentValue.likes += 1;
+      } else {
+        currentValue.likes = 1;
+      }
+    } else {
+      currentValue = { likes: 1 };
+    }
+    // 更新後のデータを返す
+    return currentValue;
+  })
+  .then(() => {
+    // データの更新に成功した場合の処理
+    console.log('Like count updated successfully!');
+  })
+  .catch((error) => {
+    // データの更新に失敗した場合の処理
+    console.error('Failed to update like count:', error);
+  });
+}
+
+        //データ登録(Click) - firebaseの保存するデータプロパティ
+$("#send").on("click",function() {
+
+// 必須フィールドがブランクの場合はアラートを出す
+const uname = $("#uname").val().trim();
+const text = $("#text").val().trim();
+
+    // 必須項目がブランクの場合、アラートを表示して処理を終了
+    if (uname === "" || text === "") {
+        alert("必須項目を入力してください。");
+        return; // ここで処理を終了
+    }
+ 
+    const msg = {
+        uname: $("#uname").val(),
+        text: $("#text").val(),
+        consultationType: $("#consultationType").val(),
+        timestamp: new Date().toISOString() //現在の日時と時刻を追加
+    }
+    const newPostRef = push(dbRef); //ユニークKEYを生成
+    set(newPostRef, msg);           //"chat"にユニークKEYをつけてオブジェクトデータを登録
+});
+
+//データ登録(Enter)
+$("#text").on("keydown",function(e){
+    console.log(e);        //e変数の中身を確認！！
+    if(e.keyCode == 13){   //EnterKey=13
+        const msg = {
+            uname: $("#uname").val(),
+            text: $("#text").val()
+        }
+        const newPostRef = push(dbRef); //ユニークKEYを生成
+        set(newPostRef, msg);           //"chat"にユニークKEYをつけてオブジェクトデータを登録
+    }
+});
+
+// クリックいいねイベントの設定
+$(document).on('click', '.like-button', function() {
+  const messageId = $(this).data('id');
+  incrementLike(messageId);
+});
+
+// 相談項目のマッピング
+const consultationTypeMap = {
+    'self-analysis': '自己分析',
+    'career-consultation': 'キャリア相談',
+    'job-change': '転職相談',
+    'interview-preparation': '面接対策',
+    'other': 'その他'
+};
+
+//最初にデータ取得＆onSnapshotでリアルタイムにデータを取得
+onChildAdded(dbRef, function(data){   
+    const msg  = data.val();    //オブジェクトデータを取得し、変数msgに代入
+    const key  = data.key;      //データのユニークキー（削除や更新に使用可能）
+    const like = msg.likes;
+    const timestamp = new Date(msg.timestamp).toLocaleString();
+    const consultationTypeText = consultationTypeMap[msg.consultationType] || ''; //
+    //表示用テキスト・HTMLを作成
+    let h ='<div class=comment_box>';
+        h += '<p id="'+key+ '"">';
+        h +='<i class="fa-solid fa-user" style="color: rgb(43, 195, 195);"></i>'
+        h += msg.uname;
+        h +='<br>';
+        h +='<span contentEditable="true" id="'+key+'_update">'+msg.text+'</span>';
+        h +='<br>';
+        h += '<span class="timestamp">'+timestamp+'</span>';
+        h += '<br>';
+        h += '<span class="consultation-type"><i class="fa-solid fa-hashtag" style="color: rgb(43, 195, 195);"></i>' + consultationTypeText + '</span>'; // マッピングを使用
+        h += '<br>';        
+        h +='<span class="remove" data-key="'+key+'"><i class="fa-solid fa-trash-can" style="color: rgb(43, 195, 195);"></i></span>';
+        h +='<span class="update" data-key="'+key+'"><i class="fa-solid fa-pen-to-square" style="color: rgb(43, 195, 195);"></i></span>';
+        // いいねボタン追加
+        h += '<button class="like-button" data-id="'+ key +'"><i class="fa-solid fa-thumbs-up" style="color: rgb(43, 195, 195);"></i>'+ (like !== undefined ? like : 0) +'</button>';
+        h += "</p>";
+        h += "</div>"
+        $("#output").append(h); //#outputの最後に追加
+      });
+
+     // 　削除イベント
+     $("#output").on("click", ".remove", function(){
+          const key =$(this).attr("data-key");
+          console.log("削除するキー: ", key); // デバッグ: キーが正しいか確認
+          const remove_item = ref(db,"chat/"+key);
+          console.log("削除対象: ", remove_item); // デバッグ: データベース参照が正しいか確認
+          remove(remove_item);
+});
+
+     // 　更新イベント
+     $("#output").on("click", ".update", function(){
+          const key =$(this).attr("data-key");
+          console.log("更新するキー: ", key); // デバッグ: キーが正しいか確認
+          update(ref(db, "chat/"+key),{
+            text: $("#"+key+'_update').html()
+          });
+        });
+
+    // データが削除されたときに呼ばれる
+    onChildRemoved(dbRef, (data) => {
+    $("#" + data.key).remove();
+    });
+
+    onChildChanged(dbRef, (data) => {
+    $("#" + data.key + '_update').html(data.val().text);
+    $("#" + data.key + '_update').fadeOut(800).fadeIn(800);
+});
+
+// Likeを更新
+onChildChanged(dbRef, function (data) {
+    const msg = data.val();
+    const key = data.key;
+    const like = msg.likes;
+
+    // 要素を更新
+    $('.like-button[data-id="' + key + '"]').html('<i class="fa-solid fa-thumbs-up" style="color: rgb(43, 195, 195);"></i>' + (like !== undefined ? like : 0));
+});
+
+
+</script> 
+</body>
+</html>
